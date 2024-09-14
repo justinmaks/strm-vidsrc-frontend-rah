@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieSearch from './components/MovieSearch';
 import MovieList from './components/MovieList';
-import MoviePlayer from './components/MoviePlayer';
+import MoviePlayerPage from './components/MoviePlayerPage';
+import axios from 'axios';
 import './App.css';
 
-
 interface Movie {
-  id: number; // This will be the TMDb id
+  id: number;
   title: string;
 }
 
-const TMDB_API_KEY = ''; // <-- Replace this with your TMDb API key
+const TMDB_API_KEY = ''; // Replace with your TMDB API key
 
 const App: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
 
   const handleSearch = async (query: string) => {
     try {
@@ -23,30 +22,33 @@ const App: React.FC = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}`
       );
 
-      // Map the movie data into our movie format (id and title)
       const movieData = response.data.results.map((movie: any) => ({
-        id: movie.id, // TMDb id
+        id: movie.id,
         title: movie.title,
       }));
 
       setMovies(movieData);
-      setSelectedMovieId(null); // Clear player when new search is made
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
   };
 
-  const handleSelectMovie = (movieId: number) => {
-    setSelectedMovieId(movieId);
-  };
-
   return (
-    <div className="App">
-      <h1>Movie and Show Search</h1>
-      <MovieSearch onSearch={handleSearch} />
-      <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
-      {selectedMovieId && <MoviePlayer movieId={selectedMovieId} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <h1>MOVIE SEARCH</h1>
+              <MovieSearch onSearch={handleSearch} />
+              <MovieList movies={movies} />
+            </>
+          }
+        />
+        <Route path="/movie/:id" element={<MoviePlayerPage />} />
+      </Routes>
+    </Router>
   );
 };
 
