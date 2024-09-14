@@ -9,9 +9,11 @@ import './App.css';
 interface Movie {
   id: number;
   title: string;
+  posterPath: string; // Add posterPath to the movie interface
 }
 
 const TMDB_API_KEY = ''; // Replace with your TMDB API key
+const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500'; // TMDb poster base URL
 
 const App: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -25,6 +27,7 @@ const App: React.FC = () => {
       const movieData = response.data.results.map((movie: any) => ({
         id: movie.id,
         title: movie.title,
+        posterPath: movie.poster_path ? `${POSTER_BASE_URL}${movie.poster_path}` : '', // Full URL for the poster image
       }));
 
       setMovies(movieData);

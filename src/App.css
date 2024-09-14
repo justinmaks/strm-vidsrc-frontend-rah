@@ -72,11 +72,18 @@ button:hover {
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for the movie card */
 .movie-card:hover {
   background-color: #333;
   transform: scale(1.05); /* Slight zoom-in effect */
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Slight shadow on hover */
+}
+
+.movie-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 h3 {
@@ -117,9 +124,9 @@ h1 {
 
 /* Centered and Larger iframe */
 .iframe-wrapper {
-  width: 80%; /* Set the width of the player */
-  max-width: 1200px; /* Limit the width to 1200px */
-  height: 675px; /* 16:9 aspect ratio height when width is 1200px */
+  width: 80%;
+  max-width: 1200px;
+  height: 675px;
   margin: 20px 0;
 }
 
