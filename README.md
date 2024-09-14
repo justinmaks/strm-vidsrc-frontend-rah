@@ -2,8 +2,7 @@
 
 ## TODO
 
-- TV shows
-    - use new embed (https://player.vidsrc.nl/embed/tv/52814/1/1)
+- TV - add season/episode navigator on player page
 - backend ? - CORS, api key, etc.
 
 
