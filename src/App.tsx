@@ -43,7 +43,10 @@ const App: React.FC = () => {
           path="/"
           element={
             <>
-              <h1>MOVIE SEARCH</h1>
+              <div className="header">
+                <h1 className="rahtube-title">RAHTUBE</h1>
+                <h2 className="movie-search-title">MOVIE SEARCH</h2>
+              </div>
               <MovieSearch onSearch={handleSearch} />
               <MovieList movies={movies} />
             </>

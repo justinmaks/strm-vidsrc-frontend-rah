@@ -145,3 +145,23 @@ h1 {
     height: 400px; /* Smaller height for mobile */
   }
 }
+
+/* Styles for RAHTUBE title */
+.rahtube-title {
+  text-align: center;
+  color: #ff6347; /* Tomato color */
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 5px; /* Space out the letters a bit */
+}
+
+/* Styles for MOVIE AND SHOW SEARCH title */
+.movie-search-title {
+  text-align: center;
+  color: #ff6347; /* Tomato color */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
