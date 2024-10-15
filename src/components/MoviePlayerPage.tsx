@@ -2,8 +2,17 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const MoviePlayerPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // Get the movie ID from the URL
-  const embedUrl = `https://player.vidsrc.nl/embed/movie/${id}`; // Embed link
+  const { id, season, episode } = useParams<{
+    id: string;
+    season?: string;
+    episode?: string;
+  }>();
+
+  // Determine if it's a TV show by checking for season and episode
+  const isTVShow = Boolean(season && episode);
+  const embedUrl = isTVShow
+    ? `https://player.vidsrc.nl/embed/tv/${id}/${season}/${episode}`
+    : `https://player.vidsrc.nl/embed/movie/${id}`;
 
   return (
     <div className="movie-player-container">
@@ -14,7 +23,7 @@ const MoviePlayerPage: React.FC = () => {
           width="100%"
           height="100%"
           allowFullScreen
-          title="Movie Player"
+          title="Movie/Show Player"
         />
       </div>
     </div>
