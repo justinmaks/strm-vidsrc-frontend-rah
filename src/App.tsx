@@ -12,7 +12,7 @@ interface Movie {
   posterPath: string; // Add posterPath to the movie interface
 }
 
-const TMDB_API_KEY = ''; // Replace with your TMDB API key
+const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY || '';
 const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500'; // TMDb poster base URL
 
 const App: React.FC = () => {
