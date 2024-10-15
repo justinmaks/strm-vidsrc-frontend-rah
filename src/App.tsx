@@ -13,8 +13,10 @@ interface Movie {
   type: 'movie' | 'tv'; // Identify movie or TV show
 }
 
-const TMDB_API_KEY = '';
-const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY || '';
+const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500'; // TMDb poster base URL
+
 
 const App: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);

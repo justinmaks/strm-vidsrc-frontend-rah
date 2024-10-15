@@ -7,6 +7,15 @@
 
 
 
+## Usage
+
+1. Get and create TMDB api key
+2. Create `.env` file with content from `.env.example` using your own key
+3. `docker compose up --build`
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

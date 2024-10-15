@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        REACT_APP_TMDB_API_KEY: ${REACT_APP_TMDB_API_KEY}  # Pass the environment variable during build
+    ports:
+      - "3000:80"  # Maps port 80 in the container to port 3000 on the host machine
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env  # Load environment variables from the .env file
+    restart: unless-stopped
